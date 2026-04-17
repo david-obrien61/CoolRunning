@@ -1,0 +1,49 @@
+{
+  "tile_id": "env_living_room_bme680",
+  "component_type": "DataNode",
+  "layout_priority": 1,
+  "data_bindings": {
+    "protocol": "mqtt",
+    "topic": "coolrunning/environment/living_room"
+  },
+  "visual_schema": {
+    "icon_primary": "mdi:thermometer-lines",
+    "background_color": "ign-surface-main",
+    "text_color": "ign-accent-active",
+    "border_radius": "8px",
+    "border_style": "1px solid #30363D"
+  },
+  "data_streams": {
+    "temperature": {
+      "unit": "°F",
+      "thresholds": {
+        "alert_high": 85,
+        "alert_low": 60
+      }
+    },
+    "humidity": {
+      "unit": "%",
+      "thresholds": {
+        "alert_high": 65
+      }
+    },
+    "pressure": {
+      "unit": "hPa"
+    },
+    "air_quality": {
+      "unit": "IAQ",
+      "thresholds": {
+        "alert_high": 150
+      }
+    }
+  },
+  "state_modifiers": {
+    "condition": "temperature > data_streams.temperature.thresholds.alert_high OR air_quality > data_streams.air_quality.thresholds.alert_high",
+    "action": "override_visuals",
+    "new_values": {
+      "border_style": "1px solid ign-accent-alert",
+      "text_color": "ign-accent-alert",
+      "icon_animation": "pulse"
+    }
+  }
+}
