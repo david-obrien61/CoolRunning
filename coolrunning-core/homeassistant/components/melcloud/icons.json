@@ -1,0 +1,40 @@
+{
+  "entity": {
+    "binary_sensor": {
+      "boiler_status": {
+        "default": "mdi:water-boiler-off",
+        "state": {
+          "on": "mdi:water-boiler"
+        }
+      },
+      "valve_2way_status": {
+        "default": "mdi:valve-closed",
+        "state": {
+          "on": "mdi:valve-open"
+        }
+      },
+      "valve_3way_status": {
+        "default": "mdi:valve-closed",
+        "state": {
+          "on": "mdi:valve-open"
+        }
+      }
+    },
+    "sensor": {
+      "energy_consumed": {
+        "default": "mdi:factory"
+      },
+      "fan_frequency": {
+        "default": "mdi:fan"
+      }
+    }
+  },
+  "services": {
+    "set_vane_horizontal": {
+      "service": "mdi:arrow-left-right"
+    },
+    "set_vane_vertical": {
+      "service": "mdi:arrow-up-down"
+    }
+  }
+}
