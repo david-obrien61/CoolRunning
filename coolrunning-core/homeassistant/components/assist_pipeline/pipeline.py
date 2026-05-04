@@ -16,7 +16,6 @@ import time
 from typing import TYPE_CHECKING, Any, cast
 import wave
 
-import hass_nabucasa
 import voluptuous as vol
 
 from homeassistant.components import (
@@ -956,11 +955,6 @@ class PipelineRun:
             )
         except asyncio.CancelledError, TimeoutError:
             raise  # expected
-        except hass_nabucasa.auth.Unauthenticated as src_error:
-            raise SpeechToTextError(
-                code="cloud-auth-failed",
-                message="Home Assistant Cloud authentication failed",
-            ) from src_error
         except Exception as src_error:
             _LOGGER.exception("Unexpected error during speech-to-text")
             raise SpeechToTextError(
