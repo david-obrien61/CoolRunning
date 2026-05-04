@@ -7,7 +7,6 @@ from contextlib import suppress
 from ipaddress import ip_address
 
 from aiohttp import hdrs
-from hass_nabucasa import remote
 import yarl
 
 from homeassistant.core import HomeAssistant
@@ -328,8 +327,4 @@ def _get_cloud_url(hass: HomeAssistant, require_current_request: bool = False) -
 
 def is_cloud_connection(hass: HomeAssistant) -> bool:
     """Return True if the current connection is a nabucasa cloud connection."""
-
-    if "cloud" not in hass.config.components:
-        return False
-
-    return remote.is_cloud_request.get()
+    return False
